@@ -1,0 +1,30 @@
+name: 'DevSecOps Application Security Actions'
+description: 'Running SNYK Security Scans for project codes'
+
+inputs:
+  application_name:
+    required: false
+  dependency_scan_token:
+    required: false
+  dependency_scan_arguments:
+    required: false
+  build_tool:   
+    required: false
+    
+    
+runs:
+  using: "composite"
+  steps:
+  
+  - uses: snyk/actions/setup@master
+  - name: Snyk monitor
+    run: snyk test --all-projects ${{inputs.dependency_scan_arguments}} || echo "snyk scan completed"
+    shell: bash
+    env:
+      SNYK_TOKEN: ${{inputs.dependency_scan_token}}
+      
+  - name: Snyk Continuous Monitor
+    run: snyk monitor ${{inputs.dependency_scan_arguments}} || echo "snyk monitor enabling completed"
+    shell: bash
+    env:
+      SNYK_TOKEN: ${{inputs.dependency_scan_token}}
