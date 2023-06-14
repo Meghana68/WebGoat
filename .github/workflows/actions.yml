@@ -20,7 +20,7 @@ jobs:
             echo "----------Snyk Monitor-----------"
             ./snyk monitor --all-projects 
 
-jobs:
+#jobs:
 #     code-security:
 #       runs-on: ubuntu-latest
 #       steps:
