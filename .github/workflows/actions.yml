@@ -2,7 +2,6 @@ name: Snyk_Code_Scan
 on: [push]
 jobs:
       Snyk_Code_Scan:
-        needs: Code_checkout
         runs-on: <runner-machine>    
         steps:
         - uses: actions/checkout@v1
