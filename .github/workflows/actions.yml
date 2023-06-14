@@ -2,7 +2,7 @@ name: Snyk_Code_Scan
 on: [push]
 jobs:
       Snyk_Code_Scan:
-        runs-on: <runner-machine>    
+        runs-on: ubuntu-latest   
         steps:
         - uses: actions/checkout@v1
         - name: Snyk Code Scanning
